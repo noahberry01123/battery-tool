@@ -1,0 +1,1 @@
+Dry run: no settings were changed. Extreme Low Power Mode was ON (manual) throughout, so the 'normal' labels here do NOT describe the condition. Pipeline test only; not a result.

@@ -1,0 +1,109 @@
+[
+  {
+    "step": "S0_off",
+    "t": 1792452684.5499399,
+    "demoted_total": 12,
+    "demoted_beyond_baseline": 0,
+    "recorded": 0,
+    "demoted_not_recorded": 0,
+    "leak_examples": [],
+    "recorded_not_demoted": 0,
+    "record_malformed_lines": 0,
+    "record_exists": false,
+    "frontmost_pid": "1254",
+    "frontmost_demoted": false,
+    "lpm": {
+      "battery": 1,
+      "ac": 1
+    },
+    "daemon_pid": "75849"
+  },
+  {
+    "step": "S1_on",
+    "t": 1792452719.4850838,
+    "demoted_total": 315,
+    "demoted_beyond_baseline": 304,
+    "recorded": 302,
+    "demoted_not_recorded": 2,
+    "leak_examples": [
+      "pgrep",
+      "proccores"
+    ],
+    "recorded_not_demoted": 0,
+    "record_malformed_lines": 0,
+    "record_exists": true,
+    "frontmost_pid": "1254",
+    "frontmost_demoted": false,
+    "lpm": {
+      "battery": 1,
+      "ac": 1
+    },
+    "daemon_pid": "75849"
+  },
+  {
+    "step": "S2_after_kill9",
+    "t": 1792452781.4987688,
+    "demoted_total": 315,
+    "demoted_beyond_baseline": 304,
+    "recorded": 302,
+    "demoted_not_recorded": 2,
+    "leak_examples": [
+      "pgrep",
+      "proccores"
+    ],
+    "recorded_not_demoted": 0,
+    "record_malformed_lines": 0,
+    "record_exists": true,
+    "frontmost_pid": "1254",
+    "frontmost_demoted": false,
+    "lpm": {
+      "battery": 1,
+      "ac": 1
+    },
+    "daemon_pid": "98117",
+    "old_daemon_pid": "75849",
+    "new_daemon_pid": "98117",
+    "restart_s": 1.189054012298584
+  },
+  {
+    "step": "S3_after_wake",
+    "t": 1792453051.8625689,
+    "demoted_total": 313,
+    "demoted_beyond_baseline": 302,
+    "recorded": 302,
+    "demoted_not_recorded": 1,
+    "leak_examples": [
+      "proccores"
+    ],
+    "recorded_not_demoted": 1,
+    "record_malformed_lines": 0,
+    "record_exists": true,
+    "frontmost_pid": "1254",
+    "frontmost_demoted": false,
+    "lpm": {
+      "battery": 1,
+      "ac": 1
+    },
+    "daemon_pid": "98117",
+    "slept_wall_s": 236.48083591461182
+  },
+  {
+    "step": "S4_off_again",
+    "t": 1792453086.815197,
+    "demoted_total": 11,
+    "demoted_beyond_baseline": 0,
+    "recorded": 0,
+    "demoted_not_recorded": 0,
+    "leak_examples": [],
+    "recorded_not_demoted": 0,
+    "record_malformed_lines": 0,
+    "record_exists": false,
+    "frontmost_pid": "1254",
+    "frontmost_demoted": false,
+    "lpm": {
+      "battery": 1,
+      "ac": 1
+    },
+    "daemon_pid": "98117"
+  }
+]

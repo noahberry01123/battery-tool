@@ -1,0 +1,37 @@
+window,condition,scenario,rep,start,end,seconds,result
+Anormal_idle_r1,normal,idle,1,1792377295.553,1792377415.560,120.01,ok
+Anormal_bg_single_r1,normal,bg_single,1,1792377447.706,1792377467.449,19.74,job_s=19.65 cpu=19.69 pshare=0.999 energy_j=36.22
+Anormal_sustained8_r1,normal,sustained8,1,1792377499.604,1792377589.630,90.03,ok
+Anormal_bg_multi_r1,normal,bg_multi,1,1792377621.789,1792377627.355,5.57,job_s=5.48 cpu=5.48 pshare=0.983 energy_j=9.55
+Blowpower_idle_r1,lowpower,idle,1,1792377695.533,1792377815.546,120.01,ok
+Blowpower_bg_single_r1,lowpower,bg_single,1,1792377847.689,1792377873.470,25.78,job_s=25.70 cpu=25.75 pshare=1.000 energy_j=25.80
+Blowpower_sustained8_r1,lowpower,sustained8,1,1792377905.614,1792377995.647,90.03,ok
+Blowpower_bg_multi_r1,lowpower,bg_multi,1,1792378027.796,1792378034.813,7.02,job_s=6.93 cpu=6.79 pshare=0.970 energy_j=6.63
+Cextreme_idle_r1,extreme,idle,1,1792378107.174,1792378227.875,120.70,ok
+Cextreme_bg_single_r1,extreme,bg_single,1,1792378314.726,1792378737.980,423.25,job_s=413.81 cpu=34.77 pshare=0.000 energy_j=6.46
+Cextreme_sustained8_r1,extreme,sustained8,1,1792378772.694,1792378870.286,97.59,ok
+Cextreme_bg_multi_r1,extreme,bg_multi,1,1792378903.767,1792379499.281,595.51,job_s=562.72 cpu=9.04 pshare=0.000 energy_j=1.76
+Cextreme_idle_r2,extreme,idle,2,1792379687.130,1792379807.425,120.30,ok
+Cextreme_bg_single_r2,extreme,bg_single,2,1792379882.453,1792381907.585,2025.13,job_s=1959.59 cpu=34.66 pshare=0.000 energy_j=6.60
+Cextreme_sustained8_r2,extreme,sustained8,2,1792381941.343,1792382033.343,92.00,ok
+Cextreme_bg_multi_r2,extreme,bg_multi,2,1792382069.144,1792382212.729,143.58,job_s=135.01 cpu=8.81 pshare=0.000 energy_j=1.75
+Blowpower_idle_r2,lowpower,idle,2,1792382286.387,1792382406.396,120.01,ok
+Blowpower_bg_single_r2,lowpower,bg_single,2,1792382438.534,1792382464.311,25.78,job_s=25.69 cpu=25.75 pshare=1.000 energy_j=25.53
+Blowpower_sustained8_r2,lowpower,sustained8,2,1792382496.434,1792382586.465,90.03,ok
+Blowpower_bg_multi_r2,lowpower,bg_multi,2,1792382618.609,1792382625.437,6.83,job_s=6.74 cpu=6.76 pshare=0.989 energy_j=6.77
+Anormal_idle_r2,normal,idle,2,1792382690.501,1792382810.511,120.01,ok
+Anormal_bg_single_r2,normal,bg_single,2,1792382842.662,1792382862.482,19.82,job_s=19.74 cpu=19.76 pshare=0.999 energy_j=36.04
+Anormal_sustained8_r2,normal,sustained8,2,1792382894.647,1792382984.652,90.01,ok
+Anormal_bg_multi_r2,normal,bg_multi,2,1792383016.797,1792383022.491,5.69,job_s=5.60 cpu=5.54 pshare=0.955 energy_j=9.35
+Anormal_idle_r3,normal,idle,3,1792383090.396,1792383210.395,120.00,ok
+Anormal_bg_single_r3,normal,bg_single,3,1792383242.555,1792383262.323,19.77,job_s=19.69 cpu=19.70 pshare=0.999 energy_j=36.06
+Anormal_sustained8_r3,normal,sustained8,3,1792383294.462,1792383384.493,90.03,ok
+Anormal_bg_multi_r3,normal,bg_multi,3,1792383416.641,1792383422.172,5.53,job_s=5.45 cpu=5.47 pshare=0.987 energy_j=9.49
+Blowpower_idle_r3,lowpower,idle,3,1792383490.312,1792383610.316,120.00,ok
+Blowpower_bg_single_r3,lowpower,bg_single,3,1792383642.460,1792383668.212,25.75,job_s=25.69 cpu=25.73 pshare=1.000 energy_j=25.64
+Blowpower_sustained8_r3,lowpower,sustained8,3,1792383700.365,1792383790.395,90.03,ok
+Blowpower_bg_multi_r3,lowpower,bg_multi,3,1792383822.538,1792383829.548,7.01,job_s=6.93 cpu=6.78 pshare=0.974 energy_j=6.62
+Cextreme_idle_r3,extreme,idle,3,1792383956.741,1792384077.231,120.49,ok
+Cextreme_bg_single_r3,extreme,bg_single,3,1792384272.666,1792386563.684,2291.02,job_s=2156.91 cpu=35.46 pshare=0.000 energy_j=6.60
+Cextreme_sustained8_r3,extreme,sustained8,3,1792386604.576,1792386694.985,90.41,ok
+Cextreme_bg_multi_r3,extreme,bg_multi,3,1792386745.306,1792387264.988,519.68,job_s=507.66 cpu=9.06 pshare=0.000 energy_j=1.76

@@ -1,0 +1,21 @@
+# Build output (build.sh)
+/build/
+.DS_Store
+
+# Raw benchmark data stays local: it lists running apps, process paths and personal folders.
+# Published: charts, summary tables, run notes (see benchmarks/README.md).
+benchmarks/results/**/procs/
+benchmarks/results/**/pm/
+benchmarks/results/**/snapshots/
+benchmarks/results/**/battery/
+benchmarks/results/**/latency/
+benchmarks/results/**/changes_*.tsv
+benchmarks/results/**/meta.json
+benchmarks/results/**/telemetry.csv
+benchmarks/results/**/helper.log
+benchmarks/results/**/daemon_log_tail.txt
+benchmarks/results/**/display_events.txt
+benchmarks/results/**/failures.jsonl
+benchmarks/results/*.log
+bench/results-*/powermetrics.txt.gz
+bench/results-*/temps.txt

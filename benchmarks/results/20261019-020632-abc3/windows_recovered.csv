@@ -1,0 +1,28 @@
+window,condition,scenario,rep,start,end,seconds,result
+Anormal_idle_r1,normal,idle,1,1792368555.376,1792368675.379,120.00,ok
+Anormal_bg_single_r1,normal,bg_single,1,1792368707.505,1792368727.178,19.67,job_s=19.59 cpu=19.63 pshare=0.999 energy_j=36.29 recovered_from=failures.jsonl
+Anormal_bg_multi_r1,normal,bg_multi,1,1792368759.282,1792368764.828,5.55,job_s=5.47 cpu=5.47 pshare=0.988 energy_j=9.43 recovered_from=failures.jsonl
+Blowpower_idle_r1,lowpower,idle,1,1792368830.338,1792368950.343,120.01,ok
+Blowpower_bg_single_r1,lowpower,bg_single,1,1792368982.461,1792369008.241,25.78,job_s=25.71 cpu=25.71 pshare=0.999 energy_j=25.67 recovered_from=failures.jsonl
+Blowpower_bg_multi_r1,lowpower,bg_multi,1,1792369040.327,1792369047.277,6.95,job_s=6.87 cpu=6.76 pshare=0.986 energy_j=6.65 recovered_from=failures.jsonl
+Cextreme_idle_r1,extreme,idle,1,1792369125.783,1792369247.360,121.58,ok
+Cextreme_bg_single_r1,extreme,bg_single,1,1792369351.318,1792370791.679,1440.36,job_s=1386.02 cpu=39.66 pshare=0.000 energy_j=5.93 recovered_from=failures.jsonl
+Cextreme_bg_multi_r1,extreme,bg_multi,1,1792370824.865,1792370964.154,139.29,job_s=132.10 cpu=8.95 pshare=0.000 energy_j=1.76 recovered_from=failures.jsonl
+Cextreme_idle_r2,extreme,idle,2,1792371035.897,1792371155.997,120.10,ok
+Cextreme_bg_single_r2,extreme,bg_single,2,1792371188.740,1792371291.244,102.50,job_s=102.10 cpu=40.17 pshare=0.000 energy_j=5.82 recovered_from=failures.jsonl
+Cextreme_bg_multi_r2,extreme,bg_multi,2,1792371323.944,1792371423.847,99.90,job_s=95.87 cpu=8.84 pshare=0.000 energy_j=1.75 recovered_from=failures.jsonl
+Blowpower_idle_r2,lowpower,idle,2,1792371490.960,1792371610.965,120.00,ok
+Blowpower_bg_single_r2,lowpower,bg_single,2,1792371643.083,1792371668.899,25.82,job_s=25.72 cpu=25.78 pshare=1.000 energy_j=25.58 recovered_from=failures.jsonl
+Blowpower_bg_multi_r2,lowpower,bg_multi,2,1792371701.007,1792371707.858,6.85,job_s=6.77 cpu=6.77 pshare=0.986 energy_j=6.68 recovered_from=failures.jsonl
+Anormal_idle_r2,normal,idle,2,1792371775.416,1792371895.419,120.00,ok
+Anormal_bg_single_r2,normal,bg_single,2,1792371927.543,1792371947.239,19.70,job_s=19.61 cpu=19.67 pshare=1.000 energy_j=36.13 recovered_from=failures.jsonl
+Anormal_bg_multi_r2,normal,bg_multi,2,1792371979.368,1792371985.598,6.23,job_s=6.15 cpu=5.62 pshare=0.963 energy_j=9.09 recovered_from=failures.jsonl
+Anormal_idle_r3,normal,idle,3,1792372050.327,1792372170.336,120.01,ok
+Anormal_bg_single_r3,normal,bg_single,3,1792372202.459,1792372222.184,19.73,job_s=19.64 cpu=19.69 pshare=1.000 energy_j=36.11 recovered_from=failures.jsonl
+Anormal_bg_multi_r3,normal,bg_multi,3,1792372254.287,1792372259.798,5.51,job_s=5.43 cpu=5.46 pshare=0.993 energy_j=9.28 recovered_from=failures.jsonl
+Blowpower_idle_r3,lowpower,idle,3,1792372326.094,1792372446.098,120.00,ok
+Blowpower_bg_single_r3,lowpower,bg_single,3,1792372478.213,1792372504.178,25.97,job_s=25.89 cpu=25.87 pshare=0.998 energy_j=25.51 recovered_from=failures.jsonl
+Blowpower_bg_multi_r3,lowpower,bg_multi,3,1792372536.303,1792372544.202,7.90,job_s=7.81 cpu=6.85 pshare=0.947 energy_j=6.49 recovered_from=failures.jsonl
+Cextreme_idle_r3,extreme,idle,3,1792372616.244,1792372736.343,120.10,ok
+Cextreme_bg_single_r3,extreme,bg_single,3,1792372769.020,1792372890.088,121.07,job_s=118.82 cpu=40.16 pshare=0.000 energy_j=5.88 recovered_from=failures.jsonl
+Cextreme_bg_multi_r3,extreme,bg_multi,3,1792372928.512,1792373378.704,450.19,job_s=434.22 cpu=9.02 pshare=0.000 energy_j=1.76 recovered_from=failures.jsonl

@@ -1,0 +1,1 @@
+Startup gave up before the password was entered; its helper was reused by the next run.

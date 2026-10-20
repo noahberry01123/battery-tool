@@ -1,0 +1,11 @@
+trial,pid,demote_wait_s,restore_latency_s,status
+1,92419,0.14,12.09,ok
+2,92419,7.70,,not restored in time
+3,92419,1.45,,not restored in time
+4,92419,1.39,,not restored in time
+5,92419,1.45,,not restored in time
+6,92419,0.31,3.34,ok
+7,92419,1.60,,not restored in time
+8,92419,0.11,,not restored in time
+9,92419,0.64,4.95,ok
+10,92419,7.99,,not restored in time

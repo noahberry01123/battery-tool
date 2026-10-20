@@ -1,0 +1,2 @@
+Power source: firmware round 1 (02:04-02:12) and the app_auto round 1 settle ran on battery (charger not connected); the charger was connected around 02:15 and the charge held at 55% from 02:17. Compare modes on the AC rounds; report firmware r1 separately.
+STOPPED at the user's request at ~02:18 (Ctrl-C equivalent); clean-up ran (fan daemon started, config, Battery Tool settings and charge limit restored, no workers left). Completed: firmware round 1 (on battery). Re-run later.

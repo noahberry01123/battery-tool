@@ -1,0 +1,1 @@
+FLAW (review 20 Oct): the light load was time-based (0.3 s of hashing), so under Extreme it did ~35x less work per burst; the saving is an upper bound. Runtime estimates should use the charge counter (battery_summary.md regenerated). Superseded by battery4 (fixed-work load).

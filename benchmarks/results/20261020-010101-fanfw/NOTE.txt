@@ -1,0 +1,1 @@
+INVALID: 8 orphaned work.py processes from the cancelled run 20261019-203600-fanfw were still running (started ~21:20, killed at 01:44), so the CPU was loaded during every phase of this run, including settle and cool-down. Do not use. The fan daemon and settings were restored correctly by the script.

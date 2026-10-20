@@ -1,0 +1,1 @@
+INVALID: the Mac went to idle sleep during windows B1, C1, C2, B2, A2 (telemetry gaps of 835–2815 s); the root helper also hit its 3 h limit before B2 (Low Power Mode not set). Only Anormal_light_r1 is continuous. Re-run with caffeinate -di as 20261019-*-battery2.

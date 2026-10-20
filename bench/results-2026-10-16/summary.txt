@@ -1,0 +1,12 @@
+# Synthetic (mode off; normal vs taskpolicy -b)
+phase seconds cpuW energyJ Eact% P0act% P1act% Emhz P0mhz tempMean tempPeak n
+single_normal 20.3 5.71 116 69 87 60 1694 3144 64.6 66.9 20
+single_bg 70.5 3.31 233 100 69 16 1656 2437 63.3 70.3 69
+multi_normal 6.0 14.34 86 83 98 92 2006 2999 67.8 71.0 7
+multi_bg 76.3 2.84 217 100 61 13 2056 2232 62.8 68.5 75
+
+# Same apps open, Extreme Low Power Mode off / on / off
+phase seconds cpuW energyJ Eact% P0act% P1act% Emhz P0mhz tempMean tempPeak n
+idle_off_1 180.1 2.37 426 67 59 10 1641 2212 61.5 71.4 177
+idle_on 189.5 0.77 146 100 24 3 1938 1332 53.4 61.2 187
+idle_off_2 180.1 2.80 505 72 64 14 1711 2287 61.0 68.0 177

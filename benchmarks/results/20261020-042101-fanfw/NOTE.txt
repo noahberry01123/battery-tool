@@ -1,0 +1,1 @@
+FLAW (review 20 Oct): macOS Low Power Mode was ON for the whole run (leftover), unlike the first fan test; CPU reached ~80 C, not 95 C. Superseded by the re-run with Low Power Mode off.

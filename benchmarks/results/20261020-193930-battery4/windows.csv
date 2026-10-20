@@ -1,0 +1,7 @@
+window,condition,scenario,rep,start,end,seconds,result
+Anormal_light_r1,normal,light,1,1792518044.637,1792519245.672,1201.04,bursts=120 rounds_per_burst=700
+Blowpower_light_r1,lowpower,light,1,1792519309.155,1792520510.313,1201.16,bursts=120 rounds_per_burst=700
+Cextreme_light_r1,extreme,light,1,1792520579.006,1792521782.019,1203.01,bursts=118 rounds_per_burst=700
+Cextreme_light_r2,extreme,light,2,1792521854.095,1792523057.910,1203.81,bursts=118 rounds_per_burst=700
+Blowpower_light_r2,lowpower,light,2,1792523124.629,1792524325.864,1201.23,bursts=120 rounds_per_burst=700
+Anormal_light_r2,normal,light,2,1792524393.988,1792525595.245,1201.26,bursts=120 rounds_per_burst=700

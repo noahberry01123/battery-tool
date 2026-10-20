@@ -1,0 +1,7 @@
+window,condition,scenario,rep,start,end,seconds,result
+Anormal_light_r1,normal,light,1,1792414714.752,1792415915.886,1201.13,ok
+Blowpower_light_r1,lowpower,light,1,1792415979.903,1792417181.052,1201.15,ok
+Cextreme_light_r1,extreme,light,1,1792417249.653,1792418457.130,1207.48,ok
+Cextreme_light_r2,extreme,light,2,1792418530.310,1792419733.797,1203.49,ok
+Blowpower_light_r2,lowpower,light,2,1792419800.559,1792421001.644,1201.08,ok
+Anormal_light_r2,normal,light,2,1792421069.797,1792422270.914,1201.12,ok

@@ -1,0 +1,8 @@
+main run: 20261019-043311-abc3b
+redo run: 20261019-072953-c-r3-redo
+reason: Extreme round 3 windows partly ran on battery (user unplugged the charger); redone on AC
+replaced windows:
+  Cextreme_bg_multi_r3
+  Cextreme_bg_single_r3
+  Cextreme_sustained8_r3
+FLAWS (review 20 Oct): display slept from 05:04 (rounds 2-3 off, Extreme r3 redo on) -> system power/energy need display-matched comparison (see windows_metrics.csv display_on); collectors were demoted; Cextreme_idle_r3 has a mediaanalysisd burst. Superseded by the repeated run (abc4).

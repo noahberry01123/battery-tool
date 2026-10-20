@@ -1,0 +1,5 @@
+window,condition,scenario,rep,start,end,seconds,result
+Anormal_idle_r1,normal,idle,1,1792374038.879,1792374043.881,5.00,ok
+Anormal_bg_single_r1,normal,bg_single,1,1792374045.000,1792374045.135,0.14,job_s=0.09 cpu=0.13 pshare=1.000 energy_j=0.28
+Anormal_sustained8_r1,normal,sustained8,1,1792374046.222,1792374051.239,5.02,ok
+Anormal_bg_multi_r1,normal,bg_multi,1,1792374052.334,1792374052.430,0.10,job_s=0.02 cpu=0.07 pshare=0.916 energy_j=0.14

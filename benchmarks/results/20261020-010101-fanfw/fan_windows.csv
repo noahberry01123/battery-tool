@@ -1,0 +1,13 @@
+mode,rep,phase,start,end,aborted
+firmware,1,settle,1792450940.824,1792451061.311,
+firmware,1,load,1792451061.312,1792451208.928,cpu 95.1C >= 95C for 10 s: load stopped
+firmware,1,cool,1792451208.930,1792451228.038,cpu 97.0C >= 95C for 10 s: load stopped
+app_auto,1,settle,1792451230.065,1792451241.182,cpu 98.7C >= 95C for 10 s: load stopped
+app_auto,1,load,1792451241.182,1792451421.982,
+app_auto,1,cool,1792451421.984,1792451602.005,
+app_auto,2,settle,1792451604.039,1792451724.554,
+app_auto,2,load,1792451724.555,1792451766.878,cpu 95.4C >= 95C for 10 s: load stopped
+app_auto,2,cool,1792451766.878,1792451947.146,
+firmware,2,settle,1792451949.173,1792452031.929,cpu 99.7C >= 95C for 10 s: load stopped
+firmware,2,load,1792452031.931,1792452043.165,cpu 96.8C >= 95C for 10 s: load stopped
+firmware,2,cool,1792452043.165,1792452054.272,cpu 98.8C >= 95C for 10 s: load stopped

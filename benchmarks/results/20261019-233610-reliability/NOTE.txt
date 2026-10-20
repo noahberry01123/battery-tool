@@ -1,0 +1,1 @@
+Startup failed: admin prompt not answered (osascript -60031). No settings were changed.

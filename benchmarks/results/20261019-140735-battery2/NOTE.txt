@@ -1,0 +1,1 @@
+Startup failed: admin password rejected. No settings changed.

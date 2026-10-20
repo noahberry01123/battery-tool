@@ -1,0 +1,13 @@
+# Same apps open: off / macOS Low Power Mode only / Extreme LPM, alternated twice
+# Windows rebuilt from battery-tool log timestamps (see README), 170 s each
+phase seconds cpuW energyJ Eact% P0act% P1act% Emhz P0mhz tempMean tempPeak n
+off_1 170.0 3.58 609 47 76 8 1342 3152 62.0 67.7 154
+lpm_1 170.0 2.14 364 46 77 6 1238 2448 58.1 61.2 153
+extreme_1 170.0 0.86 145 100 33 3 1911 1673 54.0 58.8 153
+off_2 170.0 3.54 602 48 75 9 1370 3154 60.8 66.6 154
+lpm_2 170.0 2.45 417 58 80 12 1440 2448 57.6 60.6 153
+extreme_2 170.0 0.52 89 100 17 1 1967 1126 51.4 58.9 152
+
+# Fixed workload at normal priority under plain Low Power Mode (run from a normal user shell)
+lpm_single 25.99 s
+lpm_multi (8 processes, slowest) 7.29 s

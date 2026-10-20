@@ -1,0 +1,5 @@
+Runner bug in this run: the workload's output line ("<s> cpu=.. pshare=.. energy_j=..") was parsed as a single
+float, so every job window was logged to failures.jsonl and marked "error" in windows.csv. The measurements
+themselves were complete (telemetry, powermetrics, process snapshots ran normally). The full job output lines are
+preserved verbatim in failures.jsonl; windows_recovered.csv restores them into the result column. windows.csv and
+failures.jsonl are left unchanged. The runner was fixed afterwards.

@@ -1,0 +1,1 @@
+FAILED: root helper did not start within 120 s (root cannot access ~/Documents: TCC). No settings were changed. Kept as a record of the failure.

@@ -1,0 +1,4 @@
+condition,rep,scenario,window,batt_c,battery_w,cpu_c,cpu_c_peak,cpu_s_all,cpu_s_demoted,cpu_s_other,fan0_rpm,gpu_c,job_s,lat_median_ms,lat_n,lat_p95_ms,n_telemetry,palm0_c,palm1_c,procs_active,procs_demoted,procs_mostly_e,procs_mostly_p,pshare_all,pshare_demoted,pshare_other,result,seconds,system_j,system_w
+normal,1,idle,Anormal_idle_r1,29.5,16.08,52.2225,55.62,0.0,0.0,0.0,5767.4475,47.6725,,,,,4,30.0,27.0,0,0,0,0,,,,ok,14.32,205.3224950349331,15.7675
+normal,1,bg_single,Anormal_bg_single_r1,29.862000000000002,14.2622,51.5962,55.35,0.0,0.0,0.0,5776.068,47.4174,81.15,,,,50,30.0,26.82,0,0,0,0,,,,job_s=81.15,88.95,1166.8488366115093,13.2976
+normal,1,bg_multi,Anormal_bg_multi_r1,30.563636363636363,14.257272727272728,51.40060606060606,54.76,0.0,0.0,0.0,5776.651515151515,47.334848484848486,37.66,177.398,211,285.915,33,30.09090909090909,27.0,0,0,0,0,,,,job_s=37.66,79.94,1019.4931383609772,13.305757575757577
