@@ -2,7 +2,7 @@
 
 How the numbers in the README and the article were measured, and the raw data.
 Machine: 14-inch MacBook Pro, M1 Pro (8 performance + 2 efficiency cores), 32 GB, macOS 26.6.2.
-Both fans were fixed at maximum ([MacFanCtl]({{MACFANCTL_REPO_URL}}), Manual 100%) for every run.
+Both fans were fixed at maximum ([MacFanCtl](https://github.com/noahberry01123/fancurve), Manual 100%) for every run.
 
 ## Results
 

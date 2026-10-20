@@ -2,7 +2,7 @@
 
 A small, free DIY battery manager for Apple Silicon MacBooks. It is a Swift CLI, a root launchd daemon and a menu bar app, with no third-party dependencies. It was built and tested on an M1 Pro MacBook Pro (MacBookPro18,3) running macOS 26.6.2.
 
-I built it to answer a question: my M1 Pro gets warmer than I'd like during casual work, so what happens if most everyday apps run on the two efficiency cores instead of the eight performance cores? The full story and measurements: [Running My M1 Pro on Its Efficiency Cores]({{MEDIUM_ARTICLE_URL}}). Its sister project, [Fan Curve]({{FANCURVE_REPO_URL}}), is a free fan controller I use alongside it.
+I built it to answer a question: my M1 Pro gets warmer than I'd like during casual work, so what happens if most everyday apps run on the two efficiency cores instead of the eight performance cores? The full story and measurements: [Running My M1 Pro on Its Efficiency Cores]({{MEDIUM_ARTICLE_URL}}). Its sister project, [Fan Curve](https://github.com/noahberry01123/fancurve), is a free fan controller I use alongside it.
 
 - **Charge limit**: stops charging at 80% and resumes at or below 75% (configurable).
 - **Heat guard**: pauses charging when the battery reaches 35 °C and resumes at or below 32 °C (configurable; it always resumes 3 °C lower).
@@ -35,7 +35,7 @@ Validated on my M1 Pro (3 modes × 3 rounds, alternating, same apps open, displa
 You need Xcode or the Command Line Tools (`xcode-select --install`).
 
 ```sh
-git clone {{BATTERY_TOOL_REPO_URL}} battery-tool
+git clone https://github.com/noahberry01123/battery-tool battery-tool
 cd battery-tool
 ./build.sh          # builds into build/ and runs the built-in self-test; no sudo
 sudo ./install.sh   # installs, starts the daemon and the menu bar app
@@ -194,7 +194,7 @@ The SMC access code is original. It uses the public IOKit AppleSMC user-client i
 
 ## Related
 
-- [Fan Curve]({{FANCURVE_REPO_URL}}) — free menu bar fan control for Apple Silicon (Auto / Manual / Curve), clamped to each fan's hardware limits.
+- [Fan Curve](https://github.com/noahberry01123/fancurve) — free menu bar fan control for Apple Silicon (Auto / Manual / Curve), clamped to each fan's hardware limits.
 
 ## License
 
