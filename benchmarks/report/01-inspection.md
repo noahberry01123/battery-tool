@@ -74,7 +74,7 @@ Severity: **H** can affect correctness or safety, **M** behaviour differs from d
 ### Battery Tool
 | # | Sev | Finding | Where |
 |---|---|---|---|
-| 1 | H | **PID reuse (TOCTOU):** `taskpolicy` runs before the identity check; a pid reused between the scan's process list and the call puts an unrelated process (possibly another user's) into darwin-bg, which is then dropped from the record and never restored | ProcessScanner.swift:167-168, LowPower.swift:277-288 |
+| 1 | H | **Fixed 21 Oct:** identity re-checked right before `taskpolicy`, and a change that lands on a reused pid is undone. Was: **PID reuse (TOCTOU):** `taskpolicy` runs before the identity check; a pid reused between the scan's process list and the call puts an unrelated process (possibly another user's) into darwin-bg, which is then dropped from the record and never restored | ProcessScanner.swift:167-168, LowPower.swift:277-288 |
 | 2 | M | If `lsappinfo` fails, an already-demoted frontmost app stays demoted (nothing new is demoted, but nothing protects it) | LowPower.swift:201-204 |
 | 3 | M | Frontmost protection covers the app's pid and bundle only: its child processes outside the bundle (shells, compilers, language servers) are demoted | ProcessScanner.swift:83-95 |
 | 4 | M | A newly frontmost app is restored at the next scan (~5 s default, up to ~60 s), not "right away" | README:100 vs LowPower.swift:38,55 |
@@ -91,10 +91,10 @@ Severity: **H** can affect correctness or safety, **M** behaviour differs from d
 ### FanCurve
 | # | Sev | Finding | Where |
 |---|---|---|---|
-| 1 | H | If `F<n>Mn/Mx` reads fail but `Tg` is writable, target becomes **0 rpm** (the `FanInfo` failure check is dead code) | fanapi.c:56-61, 86-89 |
-| 2 | H | NaN `percent`/`low` passes the clamp and is written as the fan target | fanapi.c:87-88, fancurved.c:75 |
-| 3 | H | Config is user-owned and opened with plain `fopen`: replacing it with a FIFO or `/dev/zero` symlink hangs the root daemon (no sleep release, SIGTERM not serviced; fans stay manual) | fanapi.c:106-115 |
-| 4 | M | Curve with low ≥ high (reachable in the GUI) or unreadable sensors pins fans at minimum in manual | fancurved.c:75 |
+| 1 | H | **Fixed 21 Oct:** no write unless both limits are read and valid. Was: if `F<n>Mn/Mx` reads fail but `Tg` is writable, target becomes **0 rpm** (the `FanInfo` failure check is dead code) | fanapi.c:56-61, 86-89 |
+| 2 | H | **Fixed 21 Oct:** config numbers validated, non-finite targets rejected (daemon and CLI). Was: NaN `percent`/`low` passes the clamp and is written as the fan target | fanapi.c:87-88, fancurved.c:75 |
+| 3 | H | **Fixed 21 Oct:** opened with `O_NOFOLLOW`/`O_NONBLOCK`, must be a regular file ≤ 4 KB. Was: config is user-owned and opened with plain `fopen`: replacing it with a FIFO or `/dev/zero` symlink hangs the root daemon (no sleep release, SIGTERM not serviced; fans stay manual) | fanapi.c:106-115 |
+| 4 | M | **Fixed 21 Oct:** low ≥ high falls back to defaults; unreadable sensors run the fans at full speed. Was: curve with low ≥ high (reachable in the GUI) or unreadable sensors pins fans at minimum in manual | fancurved.c:75 |
 | 5 | M | Two root controllers can fight if `make daemon` (CLI curve plist) and install.sh are both used; uninstall leaves the CLI plist | Makefile, uninstall.sh |
 | 6 | M | Non-atomic config writes can make the daemon release the fans for one tick | fanapi.c:121-126 |
 | 7 | M | GUI uses a macOS 15 API; README says macOS 13+ | FanCurve.swift:126 |

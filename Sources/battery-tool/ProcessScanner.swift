@@ -163,9 +163,20 @@ enum ProcessScanner {
 
     /// `taskpolicy -b -p <pid>` (on) or `-B` (off), then verified via bt_proc_info for the same
     /// process (pid and start time).
+    ///
+    /// The caller's `p` can be seconds old (a scan handles hundreds of processes in turn), so the
+    /// identity is checked again right before acting: a pid reused in the meantime belongs to an
+    /// unrelated process (possibly root's or another user's) and must not be touched. If the pid is
+    /// reused during the taskpolicy call itself, a darwin-bg we just put on the new process is undone.
     static func setBackground(_ p: ProcInfo, on: Bool) -> Outcome {
+        guard let before = info(p.pid), before.startSec == p.startSec, !before.exiting else { return .exited }
         let r = Shell.run("/usr/sbin/taskpolicy", [on ? "-b" : "-B", "-p", String(p.pid)], timeout: 5)
-        guard let now = info(p.pid), now.startSec == p.startSec else { return .exited }
+        guard let now = info(p.pid), now.startSec == p.startSec else {
+            if on, let other = info(p.pid), other.extDarwinBG {
+                _ = Shell.run("/usr/sbin/taskpolicy", ["-B", "-p", String(p.pid)], timeout: 5)
+            }
+            return .exited
+        }
         if now.extDarwinBG == on { return .ok }
         let err = r.stderr.trimmingCharacters(in: .whitespacesAndNewlines)
         return .failed(r.timedOut ? "taskpolicy timed out" : err.isEmpty ? "taskpolicy exit \(r.status)" : err)
