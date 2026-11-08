@@ -2,7 +2,7 @@
 
 How the numbers in the README and the article were measured, and the raw data.
 Machine: 14-inch MacBook Pro, M1 Pro (8 performance + 2 efficiency cores), 32 GB, macOS 26.6.2.
-Both fans were fixed at maximum ([MacFanCtl](https://github.com/noahberry01123/fancurve), Manual 100%) for every run.
+Both fans were fixed at maximum ([Fan Curve](https://github.com/noahberry01123/fancurve), Manual 100%) for every run.
 
 ## Results
 
@@ -67,7 +67,7 @@ python3 bench/analyze.py bench compare.txt 2 # comparison (needs temps2.txt from
 | `synthetic.sh` | 1 and 8 processes, normal vs `taskpolicy -b`, 60 s cool-down before each |
 | `realworld.sh` | Extreme Low Power Mode off / on / off, 20 s settle + 180 s measured each |
 | `compare.sh` | Off / plain Low Power Mode / Extreme LPM, alternated twice (root) |
-| `temps.sh` | Hottest `Tp*` SMC sensor once a second (via the MacFanCtl CLI) |
+| `temps.sh` | Hottest `Tp*` SMC sensor once a second (via the Fan Curve CLI) |
 | `analyze.py` | Averages powermetrics + temperatures over each phase window |
 
 > **Superseded:** these were preliminary measurements. The validated benchmark, with repeated and counterbalanced runs, is in [`../benchmarks/`](../benchmarks/report/README.md).

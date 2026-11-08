@@ -25,7 +25,7 @@ Article: `m1-pro-article/article.md` as of 17 Oct 2026. Evidence: `README.md` (t
 | "Fan Curve keeps the fans higher than Apple would" | Supported: with Apple control the fans stayed at 0 rpm up to 95 °C under load | Add the number |
 
 ## Need more testing before claiming
-- ~~Battery life~~ — measured 19 Oct with light use: −12% (Low Power Mode), −26% (Extreme) battery drain, n = 2; runtime figures are estimates.
+- ~~Battery life~~ — measured 20 Oct with light use: −9% (Low Power Mode), −32% (Extreme) battery drain, n = 2; runtime figures are estimates.
 - **"Cooler to the touch"**: chassis temperature not measured; internal sensors only. The `Ts0P` "palm rest" sensor showed no difference in 2-minute windows.
 - ~~Fan Auto behaviour vs true Apple control with the daemon stopped~~ — tested 20 Oct: same behaviour (fans off under load in both).
 
