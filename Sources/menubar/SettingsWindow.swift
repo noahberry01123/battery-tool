@@ -141,6 +141,7 @@ final class SettingsModel: ObservableObject {
 struct SettingsView: View {
     @ObservedObject var model: SettingsModel
     @State private var newName = ""
+    @AppStorage(MenuPrefs.showCPUTemperature) private var showCPUTemperature = true
 
     private var limit: Config.ChargeLimit { model.draft.chargeLimit }
     private var heat: Config.HeatGuard { model.draft.heatGuard }
@@ -150,6 +151,7 @@ struct SettingsView: View {
     var body: some View {
         VStack(spacing: 0) {
             Form {
+                menuSection
                 chargingSection
                 limitSection
                 heatSection
@@ -167,6 +169,16 @@ struct SettingsView: View {
     }
 
     // MARK: Sections
+
+    private var menuSection: some View {
+        Section {
+            Toggle("Show CPU temperature", isOn: $showCPUTemperature)
+        } header: {
+            Text("Menu")
+        } footer: {
+            caption("The hottest of the CPU's temperature sensors, read by the daemon. Takes effect immediately.")
+        }
+    }
 
     private var chargingSection: some View {
         Section {

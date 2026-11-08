@@ -12,6 +12,7 @@ struct DaemonStatus: Codable {
     var battery: BatteryReading?
     var batteryError: String?
     var batteryCurrentMA: Int?                // real-time SMC B0AC (+ = charging)
+    var cpuTemperatureC: Double?              // hottest SMC Tp* CPU sensor
     var charging = ChargingSnapshot()
     var dutyCycle = DutyCycleSnapshot()
     var lowpower = LowPowerSnapshot()
@@ -22,6 +23,7 @@ struct DaemonStatus: Codable {
         case updatedAt = "updated_at", daemonPid = "daemon_pid", version
         case appliedConfigRevision = "applied_config_revision", mode, battery
         case batteryError = "battery_error", batteryCurrentMA = "battery_current_ma"
+        case cpuTemperatureC = "cpu_temperature_c"
         case charging, dutyCycle = "duty_cycle", lowpower, probe, messages
     }
 

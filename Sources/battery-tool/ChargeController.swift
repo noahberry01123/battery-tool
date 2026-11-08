@@ -85,6 +85,8 @@ final class ChargeController {
     var handledProbeRequest = 0
 
     private var currentKeyOK = false
+    /// CPU die temperature keys present on this Mac (4-byte "flt ").
+    private var cpuKeys: [String] = []
     /// Last state confirmed by read-back: true = inhibited, false = enabled, nil = unknown.
     private(set) var confirmed: Bool?
     private var passive: (started: Double, fastLogged: Bool)?
@@ -138,6 +140,8 @@ final class ChargeController {
             if complete { usable.append(c) }
         }
         if let info = keyInfo("B0AC") { currentKeyOK = info.size == 2 && info.type == "si16" }
+        cpuKeys = Self.cpuSensorKeys.filter { k in keyInfo(k).map { $0.size == 4 && $0.type == "flt " } ?? false }
+        logInfo("CPU temperature: \(cpuKeys.count) of \(Self.cpuSensorKeys.count) SMC sensor keys present")
         for k in existing { smc.emergencyAdd(k.key, k.enable) }
         smc.installCrashHandlers()
         logInfo("crash handlers installed (\(existing.count) key(s) registered for emergency re-enable)")
@@ -172,6 +176,22 @@ final class ChargeController {
     func batteryCurrentMA() -> Int? {
         guard currentKeyOK, let bytes = smc.read("B0AC") else { return nil }
         return Self.decodeCurrent(bytes)
+    }
+
+    /// CPU die sensors (M1 Pro); the menu shows the hottest. Read-only.
+    static let cpuSensorKeys = ["Tp01", "Tp05", "Tp09", "Tp0D", "Tp0H", "Tp0L", "Tp0P", "Tp0T", "Tp0X", "Tp0b",
+                                "Tp02", "Tp06", "Tp0A", "Tp0E", "Tp0I", "Tp0M", "Tp0Q", "Tp0U", "Tp0Y", "Tp0c"]
+
+    /// Hottest CPU sensor in °C, nil when no sensor gives a plausible value.
+    func cpuTemperatureC() -> Double? {
+        cpuKeys.compactMap { smc.read($0).flatMap(Self.decodeFloat) }.filter { $0 > 0 && $0 < 150 }.max()
+    }
+
+    /// "flt " keys are 32-bit floats, little-endian on this hardware.
+    static func decodeFloat(_ b: [UInt8]) -> Double? {
+        guard b.count == 4 else { return nil }
+        let v = Double(Float(bitPattern: UInt32(b[0]) | UInt32(b[1]) << 8 | UInt32(b[2]) << 16 | UInt32(b[3]) << 24))
+        return v.isFinite ? v : nil
     }
 
     /// B0AC is si16 LITTLE-endian on this hardware (81 0b = 2945 mA while charging).
@@ -577,7 +597,7 @@ extension PolicySelfTests {
                 open: { 0 },
                 keyInfo: { key in
                     guard let v = self.values[key] else { return (BT_SMC_KEY_NOT_FOUND, 0, "") }
-                    return (0, UInt32(v.count), key == "B0AC" ? "si16" : "ui32")
+                    return (0, UInt32(v.count), key == "B0AC" ? "si16" : key.hasPrefix("Tp") ? "flt " : "ui32")
                 },
                 read: { self.values[$0] },
                 write: { key, bytes in
@@ -615,6 +635,11 @@ extension PolicySelfTests {
         t.check(ChargeController.decodeCurrent([0xff, 0xff]) == -1 && ChargeController.decodeCurrent([0x00, 0x80]) == -32768,
                 "B0AC: signed 16-bit")
         t.check(ChargeController.decodeCurrent([0x01]) == nil, "B0AC: wrong size rejected")
+        func flt(_ v: Float) -> [UInt8] { withUnsafeBytes(of: v.bitPattern.littleEndian, Array.init) }
+        t.check(ChargeController.decodeFloat(flt(45.5)) == 45.5 && ChargeController.decodeFloat([0, 0]) == nil,
+                "flt: little-endian float, wrong size rejected")
+        let ft = FakeSMC(["Tp01": flt(45.5), "Tp05": flt(50.25), "Tp09": flt(200), "Tp0D": [1, 2]])
+        t.check(ft.controller().cpuTemperatureC() == 50.25, "CPU temperature: hottest plausible sensor")
 
         // Detection by existence + size; failsafe enable of every existing candidate key.
         let f1 = FakeSMC(["CHTE": inhibited, "B0AC": [0x81, 0x0b]])
@@ -636,6 +661,7 @@ extension PolicySelfTests {
         let f0 = FakeSMC([:])
         let c0 = f0.controller()
         t.check(c0.active == nil && f0.writes == 0 && c0.batteryCurrentMA() == nil, "no keys: monitor-only, nothing written")
+        t.check(c0.cpuTemperatureC() == nil, "no keys: no CPU temperature")
 
         // Apply: write only when different, read back, rewrite external changes, failed writes.
         let f4 = FakeSMC(["CHTE": enabled])

@@ -68,6 +68,7 @@ private final class DaemonCore {
     private var lastBattery: BatteryReading?
     private var lastBatteryError: String?
     private var lastCurrentMA: Int?
+    private var lastCPUTempC: Double?
     private var lastReason = "starting"
     private var lastLogKey: String?
     private var lastStatusFailure = 0.0
@@ -149,6 +150,7 @@ private final class DaemonCore {
         lastBattery = battery
         lastBatteryError = batteryError
         lastCurrentMA = currentMA
+        lastCPUTempC = controller.cpuTemperatureC()
         lastReason = chargingReason(d)
         writeStatus()
     }
@@ -457,6 +459,7 @@ private final class DaemonCore {
         s.battery = lastBattery
         s.batteryError = lastBatteryError
         s.batteryCurrentMA = lastCurrentMA
+        s.cpuTemperatureC = lastCPUTempC
         s.charging.inhibited = controller.confirmed != false     // unknown (failed write) may still block
         s.charging.reason = lastReason
         s.charging.key = controller.active?.name

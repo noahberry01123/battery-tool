@@ -7,6 +7,11 @@ import AppKit
 // settings itself. Uninstall runs uninstall.sh as root behind the macOS
 // administrator password prompt.
 
+/// Per-user display preferences (UserDefaults), changed in the Settings window and applied at once.
+enum MenuPrefs {
+    static let showCPUTemperature = "showCPUTemperature"
+}
+
 /// Everything the menu shows, gathered off the main thread.
 struct Snapshot {
     /// nil when status.json is missing or stale (daemon not running).
@@ -63,11 +68,16 @@ struct Snapshot {
             let charging = status?.batteryCurrentMA.map { $0 > 100 } ?? b.isCharging
             let state = charging ? "Charging" : b.externalConnected ? "Not charging (AC attached)" : "On battery"
             l.append("Battery: \(b.percent)% · \(state)")
-            var temp = "Temperature: \(String(format: "%.1f", b.temperatureC)) °C"
+            var temp = "Battery temperature: \(String(format: "%.1f", b.temperatureC)) °C"
             if let c = config { temp += " (heat limit \(String(format: "%g", c.heatGuard.limitC)) °C)" }
             l.append(temp)
         } else {
             l.append("Battery: unreadable (\((batteryError ?? "no data").prefix(80)))")
+        }
+        if UserDefaults.standard.bool(forKey: MenuPrefs.showCPUTemperature) {
+            // Read by the root daemon; the menu app never touches the SMC.
+            l.append("CPU temperature: " + (status?.cpuTemperatureC.map { String(format: "%.1f °C (hottest sensor)", $0) }
+                                            ?? "unavailable"))
         }
         if let ch = status?.charging {
             let allowed = ch.reason == "charging allowed" ? "Allowed" : "Allowed (\(ch.reason))"
@@ -192,6 +202,7 @@ final class MenuController: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private var pendingExtreme: Bool?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        UserDefaults.standard.register(defaults: [MenuPrefs.showCPUTemperature: true])
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.button?.title = "…"
         menu.autoenablesItems = false
