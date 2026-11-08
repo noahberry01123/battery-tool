@@ -139,7 +139,7 @@ short windows. **Chassis temperature was not measured** (no IR thermometer); pro
 
 | Fixed work, n = 3 | Normal | Low Power Mode | Extreme (this run) | Extreme (first run) |
 |---|---|---|---|---|
-| 1 job: time | 19.7 s | 25.7 s (1.3×) | 86 / 118 / 317 s (4–16×) | 414 / 693 / 1,960 s (21–100×) |
+| 1 job: time | 19.7 s | 25.7 s (1.3×) | 86 / 108 / 317 s (4–16×) | 414 / 693 / 1,960 s (21–100×) |
 | 1 job: its CPU time | 19.7 s | 25.7 s | 33–34 s | 34–35 s |
 | 1 job: OS energy estimate for the job itself | 36 J | 26 J | 6.6 J | 6.6 J |
 | 1 job: whole-system energy until done | 272 ± 19 J | 294 ± 22 J | 675–2,600 J (2.5–10×) | 4,520–9,590 J (20–50×, display mixed) |
