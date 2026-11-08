@@ -59,7 +59,7 @@ cs = [c for c in ORDER if c in summ]
 b = ax.bar([LABEL[c] for c in cs], [summ[c][0] for c in cs], yerr=[summ[c][1] for c in cs], capsize=4,
            color=["#8a8f98", "#5b7fa6", "#1f6feb"][:len(cs)])
 for rect, c in zip(b, cs):
-    ax.annotate(f"{summ[c][0]:.0f} mAh/h\n{summ[c][3]:.1f} W system\nn={summ[c][2]}", (rect.get_x() + rect.get_width() / 2, summ[c][0]), ha="center", va="bottom",
+    ax.annotate(f"{summ[c][0]:.0f} mAh/h\n{summ[c][3]:.1f} W system\nn={summ[c][2]}", (rect.get_x() + rect.get_width() / 2, summ[c][0] + summ[c][1]), ha="center", va="bottom",
                 xytext=(0, 4), textcoords="offset points", fontsize=8)
 ax.set_ylabel("charge used per hour (mAh/h, ioreg)"); ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
 ax.set_ylim(0, max(summ[c][0] + summ[c][1] for c in cs) * 1.35)

@@ -37,6 +37,7 @@ per-core residency of an individual process over time (only cumulative P-core ti
 | `fan_test.py` | fan app Auto vs Curve vs Manual 100% under the same heat load; overheat guard; restores the config | fan app config only |
 | `fan_firmware_test.py` | fan daemon stopped (pure Apple firmware) vs the app's Auto mode, Low Power Mode forced off | fan daemon stop/start, `pmset` (root helper) |
 | `reliability_test.py` | daemon `kill -9` and sleep/wake with process-policy checks against the change record | Battery Tool mode, daemon restart, sleep (root helper) |
+| `job_time.py` | single-job time chart for the report (Extreme shown per round) | no |
 | `battery_analyze.py` | battery-test summary: charge used per hour (ioreg), system power, estimated runtime | no |
 | `frontmost_latency.py` | time from bringing a demoted app to the front until it is restored (Extreme mode on) | no (opens TextEdit) |
 

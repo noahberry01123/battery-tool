@@ -219,7 +219,7 @@ def get(sc, c, k):
 # ---------- charts ----------
 plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False, "figure.dpi": 150})
 N = max((s_["n"] for s_ in summary), default=0)
-NOTE = f"MacBookPro18,3 (M1 Pro 8P+2E), macOS 26.6.2, on AC with charging held, fans fixed at max. n = rounds per bar; error bars = SD."
+NOTE = f"MacBookPro18,3 (M1 Pro 8P+2E), macOS 26.6.2, on AC with charging held, fans fixed at max. Mean of 3 rounds; error bars = SD."
 
 
 def bars(sc, k, title, ylabel, fname, fmt="{:.2f}", scale=1.0):
@@ -274,7 +274,7 @@ for sc in ("bg_single", "bg_multi"):
 bars("bg_multi", "lat_p95_ms", "Timer-wakeup latency of an eligible process, p95 (8 jobs running)", "ms late", "bg_multi_latency_p95.png", "{:.1f}")
 
 # grouped: one metric across scenarios, three bars per scenario
-def grouped(k, ylabel, title, fname, scenarios=("idle", "sustained8", "bg_single", "bg_multi"), fmt="{:.1f}", scale=1.0):
+def grouped(k, ylabel, title, fname, scenarios=("idle", "sustained8", "bg_single", "bg_multi"), fmt="{:.1f}", scale=1.0, legend_kw={}):
     scs = [sc for sc in scenarios if any(get(sc, c, k) for c in ORDER)]
     if not scs:
         return
@@ -291,17 +291,18 @@ def grouped(k, ylabel, title, fname, scenarios=("idle", "sustained8", "bg_single
                     color="#222" if h else "#999", rotation=0 if h else 90)
     ax.set_xticks(range(len(scs))); ax.set_xticklabels([{"idle": "idle (apps open)", "sustained8": "8 jobs, 90 s",
         "bg_single": "1 job (fixed work)", "bg_multi": "8 jobs (fixed work)"}.get(sc, sc) for sc in scs])
-    ax.set_ylabel(ylabel); ax.set_title(title, loc="left", fontsize=11, fontweight="bold"); ax.legend(frameon=False, fontsize=8)
+    ax.set_ylabel(ylabel); ax.set_title(title, loc="left", fontsize=11, fontweight="bold"); ax.legend(frameon=False, fontsize=8, **legend_kw)
     fig.text(0.01, 0.01, NOTE, fontsize=6.5, color="#666"); fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(os.path.join(FIG, fname)); plt.close(fig)
 
 
-grouped("system_w", "W (SMC PSTR)", "Total system power by scenario (all windows; display state mixed)", "all_system_power.png")
+grouped("system_w", "W (SMC PSTR)", "Total system power by scenario", "all_system_power.png")
 grouped("system_w_dispon", "W (SMC PSTR)", "Total system power by scenario, display on", "all_system_power_display_on.png")
 grouped("system_w_dispoff", "W (SMC PSTR)", "Total system power by scenario, display off", "all_system_power_display_off.png")
 grouped("cpu_w", "W (powermetrics)", "CPU power by scenario", "all_cpu_power.png")
 grouped("cpu_c", "°C", "Hottest CPU sensor (mean) by scenario", "all_cpu_temp.png")
-grouped("p_active", "% of time active", "Performance cores busy (mean of P0/P1 clusters)", "all_p_cluster_busy.png")
+grouped("p_active", "% of time active", "Performance cores busy (mean of P0/P1 clusters)", "all_p_cluster_busy.png",
+        scenarios=("idle", "sustained8", "bg_single"))
 grouped("e_active", "% of time active", "Efficiency cores busy", "all_e_cluster_busy.png")
 
 # processes by where they ran (idle window)
@@ -322,7 +323,7 @@ plt.close(fig)
 
 # job: share of the job's own CPU time on P-cores (self-reported) — the clearest routing evidence
 grouped("pshare", "% of the job's CPU time on P-cores", "Background job: share of its own CPU time on performance cores", "job_pcore_share.png",
-        scenarios=("bg_single", "bg_multi"), fmt="{:.0f}%", scale=100)
+        scenarios=("bg_single", "bg_multi"), fmt="{:.0f}%", scale=100, legend_kw={"loc": "upper center", "bbox_to_anchor": (0.43, 1)})
 
 # time series of system power across the whole run, shaded by condition
 fig, ax = plt.subplots(figsize=(9, 3.4))

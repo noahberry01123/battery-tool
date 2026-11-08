@@ -75,14 +75,19 @@ for mode in LABEL:
         continue
     a = float(ws[0]["start"]); b = float(ws[-1]["end"]); t = seg(a, b)
     ax1.plot([r["epoch"] - a for r in t if r["cpu_max_c"]], [r["cpu_max_c"] for r in t if r["cpu_max_c"]], color=COLOR[mode], label=LABEL[mode], lw=1.2)
-    ax2.plot([r["epoch"] - a for r in t if r["fan0_rpm"]], [r["fan0_rpm"] for r in t if r["fan0_rpm"]], color=COLOR[mode], lw=1.2)
+    ax2.plot([r["epoch"] - a for r in t if r["fan0_rpm"] is not None], [r["fan0_rpm"] for r in t if r["fan0_rpm"] is not None], color=COLOR[mode], lw=1.2)
     load_len = float(ws[0]["end"]) - a
 ax1.axvline(load_len, color="#999", ls="--", lw=0.8); ax2.axvline(load_len, color="#999", ls="--", lw=0.8)
-ax1.text(load_len + 3, ax1.get_ylim()[1] - 3, "load stops", fontsize=8, color="#666", va="top")
+# The firmware test (fan_firmware_test.py) is the second fan test; its hot line fills the top, so the label goes low.
+fw = any(w["mode"] == "firmware" for w in win)
+if fw:
+    ax1.text(load_len + 3, ax1.get_ylim()[0] + 1, "load stops", fontsize=8, color="#666", va="bottom")
+else:
+    ax1.text(load_len + 3, ax1.get_ylim()[1] - 3, "load stops", fontsize=8, color="#666", va="top")
 ax1.set_ylabel("hottest CPU sensor (°C)"); ax2.set_ylabel("fan 0 (rpm)"); ax2.set_xlabel("seconds since the 8-process load started")
-ax1.set_title("Fan modes under the same load (round 1)", loc="left", fontsize=11, fontweight="bold"); ax1.legend(frameon=False, fontsize=8)
+ax1.set_title("Fan modes under the same load" + (", second test" if fw else "") + " (round 1)", loc="left", fontsize=11, fontweight="bold"); ax1.legend(frameon=False, fontsize=8)
 for ax in (ax1, ax2):
     ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
-fig.text(0.01, 0.005, "MacBookPro18,3, Extreme LPM off, on AC with charging held; installed MacFanCtl daemon; 1 s SMC samples.", fontsize=6.5, color="#666")
+fig.text(0.01, 0.005, "MacBookPro18,3, Extreme LPM off, on AC with charging held; 1 s SMC samples.", fontsize=6.5, color="#666")
 fig.tight_layout(rect=(0, 0.03, 1, 1)); fig.savefig(os.path.join(FIG, "fan_modes_timeseries.png"), dpi=150); plt.close(fig)
 print(open(os.path.join(RUN, "fan_summary.md")).read())
