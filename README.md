@@ -2,7 +2,7 @@
 
 A small, free DIY battery manager for Apple Silicon MacBooks. It is a Swift CLI, a root launchd daemon and a menu bar app, with no third-party dependencies. It was built and tested on an M1 Pro MacBook Pro (MacBookPro18,3) running macOS 26.6.2.
 
-I built it to answer a question: my M1 Pro gets warmer than I'd like during casual work, so what happens if most everyday apps run on the two efficiency cores instead of the eight performance cores? The full story and measurements: [Running My M1 Pro on Its Efficiency Cores]({{MEDIUM_ARTICLE_URL}}). Its sister project, [Fan Curve](https://github.com/noahberry01123/fancurve), is a free fan controller I use alongside it.
+I built it to answer a question: my M1 Pro gets warmer than I'd like during casual work, so what happens if most everyday apps run on the two efficiency cores instead of the eight performance cores? The full story and measurements: [Running My M1 Pro on Its Efficiency Cores](https://medium.com/@noah_berry_01123/running-my-m1-pro-on-its-efficiency-cores-what-i-measured-and-what-i-learned-d707447e6bd7). Its sister project, [Fan Curve](https://github.com/noahberry01123/fancurve), is a free fan controller I use alongside it.
 
 - **Charge limit**: stops charging at 80% and resumes at or below 75% (configurable).
 - **Heat guard**: pauses charging when the battery reaches 35 °C and resumes at or below 32 °C (configurable; it always resumes 3 °C lower).
